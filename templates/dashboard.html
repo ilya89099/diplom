@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+
+<body>
+    <h1>Привет {{ name }}!</h1>
+    <a href="{{url_for('logout')}}">Press here to logout</a>
+    <h1>Загрузить модель</h1>>
+    <form method=post enctype=multipart/form-data>
+      <input type=file name=file>
+      <input type=submit value=Upload>
+    </form>
+    {% if models|length < 1 %}
+    <h4>Не загружено ни одной модели</h4>
+    {% else %}
+        <ul>
+        {% for model in models %}
+            <li>{{ model.name }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+
+</html>
